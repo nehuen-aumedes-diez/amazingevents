@@ -24,7 +24,7 @@ for(let i = 0; i < data.events.length;i++){
         </div>
         <div class="d-flex p-2 justify-content-between h-10 ">
             <p class="card-text">Price$${data.events[i].price}</p>
-            <a href="./Assets/Pages/details.html" class="btn btn-primary ms-4">See more</a>
+            <a href="../Pages/details.html" class="btn btn-primary ms-4">See more</a>
         </div>
     </div>`
 cardContainer.appendChild(card)
