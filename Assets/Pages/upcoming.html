@@ -8,7 +8,7 @@
     <title>Amazing Events - Upcoming Events</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="icon" href="" />
+    <link rel="icon" type="image/png" href="../Images/favicon-32x32.png"/>
 </head>
 
 <body class="vh-100">
@@ -57,17 +57,17 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner ">
                 <div class="carousel-item active">
-                    <h2 class="text-center fs-1 fw-bold fst-italic text-success text-opacity-50 p-5 bg-danger">
+                    <h2 class="text-center fs-1 fw-bold fst-italic text-white text-opacity-75 p-5 bg-danger">
                         Upcoming Events
                     </h2>
                 </div>
                 <div class="carousel-item">
-                    <h2 class="text-center fs-1 fw-bold fst-italic text-info text-opacity-50 p-5 bg-danger">
+                    <h2 class="text-center fs-1 fw-bold fst-italic text-primary text-opacity-75 p-5 bg-danger">
                         Upcoming Events
                     </h2>
                 </div>
                 <div class="carousel-item">
-                    <h2 class="text-center fs-1 fw-bold fst-italic text-warning text-opacity-50 p-5 bg-danger">
+                    <h2 class="text-center fs-1 fw-bold fst-italic text-dark text-opacity-75 p-5 bg-danger">
                         Upcoming Events
                     </h2>
                 </div>
@@ -83,47 +83,28 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="d-flex row  justify-content-evenly ">
-            <div class="col-md-6">
-                <div class="form-check form-check-inline ms-2">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Category</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Category</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Category</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Category</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Category</label>
+        <div class="d-flex row justify-content-evenly flex-column-reverse flex-xl-row m-1 ">
+            <div class="col-md-12 col-xl-8 d-flex flex-column flex-md-row" >
+                <div class="d-flex flex-column flex-lg-row" id="checkContainer">
+ 
                 </div>
             </div>
-            <form class=" d-flex col-md-3" role="search">
+            <form class=" d-flex col-12 col-xl-4" role="search">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
-                        aria-describedby="button-addon2">
-                    <button type="button" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
-                            </path>
-                        </svg>
-                    </button>
+                    <span class="input-group-text bg-primary" id="basic-addon1">  
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>   
+                    </span>
+                    <input type="text" class="form-control" placeholder=" " aria-label="Recipient's username"
+                        aria-describedby="button-addon2" id="searchLocation">
                 </div>
             </form>
         </div>
         <div id="cardContainer" class=".container-fluid d-flex justify-content-evenly gap-2 flex-wrap mt-4">
-
+            
         </div>
+
     </main>
     <footer class="d-flex justify-content-between  border-top mt-3 fixed-bottom-xxl bg-danger   ">
         <div>
