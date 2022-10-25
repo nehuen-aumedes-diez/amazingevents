@@ -25,7 +25,7 @@ async function getData() {
                       ${data.category}
                       </li>
                       <li>
-                      ${data.date}
+                      ${(data.date).slice(0,10)}
                      </li>
                       <li>
                        ${data.description}

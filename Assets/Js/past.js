@@ -25,7 +25,7 @@ async function getData() {
                       ${data.category}
                       </li>
                       <li>
-                      ${data.date}
+                      ${(data.date).slice(0,10)}
                      </li>
                       <li>
                        ${data.description}
@@ -37,6 +37,7 @@ async function getData() {
                     <a href="./details.html?id=${data.id} " class="btn btn-primary ms-4">See more</a>
                   </div>
           </div>`
+          
         }
         document.querySelector("#cardContainer").innerHTML= arrayCards;
       });

@@ -29,7 +29,7 @@ eventContainer.innerHTML = `
                             <h5 class="card-title text-center">${evento.name}</h5>     
                                         <ul class="card-text mb-5">
                                           <li>
-                                          ${evento.date}
+                                          ${(evento.date).slice(0,10)}
                                           </li>
                                           <li>
                                           ${evento.description}
