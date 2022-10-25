@@ -1,6 +1,15 @@
-let dataEventosOriginal = data.events;
 let cardContainer = document.getElementById ("cardContainer")
 let checkContainer = document.getElementById ("checkContainer")
+
+let dataServer = getData( )
+
+async function getData () {
+await fetch("https://mh-amazing.herokuapp.com/amazing")
+  .then(response => response.json())
+  .then(json => dataServer = json)
+
+  let originalEventData = dataServer.events
+  console.log (originalEventData)
 
   //Impresion De cards
   function impCard(array) {
@@ -23,13 +32,13 @@ let checkContainer = document.getElementById ("checkContainer")
                 </div>
                 <div class="d-flex p-2 justify-content-between h- ">
                   <p class="card-text">Price$ ${data.price}</p>
-                  <a href="./Assets/Pages/details.html?id=${data._id} " class="btn btn-primary ms-4">See more</a>
+                  <a href="./Assets/Pages/details.html?id=${data.id} " class="btn btn-primary ms-4">See more</a>
                 </div>
         </div>`
-           cardContainer.innerHTML = locationforCards;
+        document.querySelector("#cardContainer").innerHTML= locationforCards;
       });
     } else {
-        cardContainer.innerHTML = `
+      document.querySelector("#cardContainer").innerHTML=  `
         <div class="card" style="width: 18rem;">
             <img src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png" class="card-img-top" alt="...">
           <div class="card-body">
@@ -39,21 +48,21 @@ let checkContainer = document.getElementById ("checkContainer")
         `;
     }
   }
-  impCard(dataEventosOriginal);
+  impCard(originalEventData);
 
   //Creacion de Checks
-  let checkboxsOrigin = dataEventosOriginal.map((evento) => evento.category);
+  let checkboxsOrigin = originalEventData.map((event) => event.category);
   let filterrepeat = new Set(checkboxsOrigin); 
   let categoriesCheck = [...filterrepeat];
 
   //Impresion Checks
   function impCheck() {
     let impCheckboxslocation = "";
-    categoriesCheck.forEach((categoria) => {
+    categoriesCheck.forEach((category) => {
       impCheckboxslocation += `<label class="checks me-3">            
       <input class="form-check-input text-start" type="checkbox" 
-      value=${categoria} id="flexCheckChecked">
-      ${categoria}
+      value=${category} id="flexCheckChecked">
+      ${category}
       </label>`;
     });
     checkContainer.innerHTML = impCheckboxslocation;
@@ -71,13 +80,13 @@ let checkContainer = document.getElementById ("checkContainer")
         if (checked) {
 
           checkboxSelected.push(event.target.value);
-          crossfilterDoble();
+          doublecrossfilter();
 
         } else {
           checkboxSelected = checkboxSelected.filter(
             (uncheck) => uncheck !== event.target.value
           );
-          crossfilterDoble();
+          doublecrossfilter();
         }
       })
     );
@@ -86,39 +95,40 @@ let checkContainer = document.getElementById ("checkContainer")
   let search = document.getElementById("searchLocation");
   search.addEventListener("keyup", (event) => {
     textSearch = event.target.value;
-    crossfilterDoble();
+    doublecrossfilter();
   });
 
   //Filtro cruzado
-  function crossfilterDoble() {
-    let datos = [];
+  function doublecrossfilter() {
+    let arrayfiltered = [];
     if (checkboxSelected.length > 0 && textSearch !== "") {
       checkboxSelected.map((selected) => {
-        datos.push(...dataEventosOriginal.filter((evento) =>
-              evento.name.toLocaleLowerCase().includes(
+        arrayfiltered.push(...originalEventData.filter((event) =>
+              event.name.toLocaleLowerCase().includes(
                 textSearch.trim().toLocaleLowerCase()
-              ) && evento.category.includes(selected)
+              ) && event.category.includes(selected)
           )
         );
 
       });
     } else if (checkboxSelected.length > 0 && textSearch === "") {
       checkboxSelected.map((selected) => {
-        datos.push(
-          ...dataEventosOriginal.filter((evento) => evento.category.includes(selected))
+        arrayfiltered.push(
+          ...originalEventData.filter((event) => event.category.includes(selected))
         );
       });
     } else if (checkboxSelected.length == 0 && textSearch !== "") {
-      datos.push(
-        ...dataEventosOriginal.filter((evento) =>
-          evento.name
+      arrayfiltered.push(
+        ...originalEventData.filter((event) =>
+          event.name
             .toLocaleLowerCase()
             .includes(textSearch.trim().toLocaleLowerCase())
         )
       );
     } else {
-      datos.push(...dataEventosOriginal);
+      arrayfiltered.push(...originalEventData);
     }
-    impCard(datos);
+    impCard(arrayfiltered);
   }
-  crossfilterDoble();
+  doublecrossfilter();
+}
